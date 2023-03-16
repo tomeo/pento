@@ -11,6 +11,11 @@ defmodule PentoWeb.Router do
     plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug :fetch_current_user
+    plug :set_special_header
+  end
+
+  def set_special_header(conn, _opts) do
+    Plug.Conn.put_resp_header(conn, "special_key", "special value")
   end
 
   pipeline :api do
