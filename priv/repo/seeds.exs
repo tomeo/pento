@@ -10,4 +10,4 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
-Pento.Accounts.register_user(%{ email: "test1@example.com", password: "testtesttest"})
+Pento.Accounts.register_user(%{ email: "test1@example.com", username: "tester", password: "testtesttest"})

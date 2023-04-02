@@ -1,13 +1,11 @@
 defmodule PentoWeb.WrongLive do
   use PentoWeb, :live_view
-  alias Pento.Accounts
 
   defp randomize_answer() do
     :rand.uniform(10) |> to_string
   end
 
   def mount(_params, session, socket) do
-    user = Accounts.get_user_by_session_token(session["user_token"])
     {
       :ok,
       assign(
@@ -16,8 +14,7 @@ defmodule PentoWeb.WrongLive do
         message: "Make a guess:",
         answer: randomize_answer(),
         time: time(),
-        session_id: session["live_socket_id"],
-        current_user: user
+        session_id: session["live_socket_id"]
       )
     }
   end
@@ -63,7 +60,7 @@ defmodule PentoWeb.WrongLive do
           </.link>
         <% end %>
         <pre>
-          <%= @current_user.email %>
+          <%= @current_user.username %>
           <%= @session_id %>
         </pre>
       </h2>
