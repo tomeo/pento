@@ -1,6 +1,6 @@
 version: '3.8'
 services:
-  dev_db:
+  db:
     image: postgres:15.2-alpine
     restart: always
     environment:
@@ -10,20 +10,7 @@ services:
     ports:
       - '5433:5432'
     volumes: 
-      - dev_db:/var/lib/postgresql/data
-  test_db:
-    image: postgres:15.2-alpine
-    restart: always
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=pento_test
-    ports:
-      - '5434:5432'
-    volumes: 
-      - test_db:/var/lib/postgresql/data
+      - db:/var/lib/postgresql/data
 volumes:
-  dev_db:
-    driver: local
-  test_db:
+  db:
     driver: local
